@@ -1,0 +1,15 @@
+from Compiler.GC.types import *
+
+from random import getrandbits
+
+sb64 = sbits.get_type(64)
+
+ROUNDS = 20000
+A = [sb64(getrandbits(32)) for _ in range(ROUNDS)]
+B = [sb64(getrandbits(32)) for _ in range(ROUNDS)]
+
+c = []
+
+for a, b in zip(A, B):
+    c.append(a & b)
+
