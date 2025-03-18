@@ -10,6 +10,7 @@
 #include "SquarePrep.h"
 #include "Math/gfp.h"
 #include "ProtocolSet.h"
+#include "SwUss23Share.h"
 
 #include "ReplicatedPrep.hpp"
 #include "Spdz2kPrep.hpp"
@@ -61,6 +62,22 @@ void buffer_bits_from_squares_in_ring(vector<SpdzWiseRingShare<K, S>>& bits,
 {
     assert(proc != 0);
     typedef SpdzWiseRingShare<K + 2, S> BitShare;
+    typename BitShare::MAC_Check MC(proc->MC.get_alphai());
+    DataPositions usage;
+    SquarePrep<BitShare> prep(usage);
+    SubProcessor<BitShare> bit_proc(MC, prep, proc->P, proc->Proc);
+    prep.set_proc(&bit_proc);
+    bits_from_square_in_ring(bits,
+            BaseMachine::batch_size<SpdzWiseRingShare<K, S>>(DATA_BIT),
+            &prep);
+}
+
+template<int K, int S>
+void buffer_bits_from_squares_in_ring(vector<SwUss23RingShare<K, S>>& bits,
+        SubProcessor<SwUss23RingShare<K, S>>* proc)
+{
+    assert(proc != 0);
+    typedef SwUss23RingShare<K + 2, S> BitShare;
     typename BitShare::MAC_Check MC(proc->MC.get_alphai());
     DataPositions usage;
     SquarePrep<BitShare> prep(usage);

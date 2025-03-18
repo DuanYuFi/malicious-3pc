@@ -3,6 +3,9 @@
  *
  */
 
+#ifndef PROTOCOLS_SPDZWISERING_HPP_
+#define PROTOCOLS_SPDZWISERING_HPP_
+
 #include "SpdzWiseRing.h"
 
 #include "PostSacrifice.hpp"
@@ -51,3 +54,5 @@ void SpdzWiseRing<T>::zero_check(check_type t)
     zero_output.Check(P);
     zero_proc.protocol.check();
 }
+
+#endif /* PROTOCOLS_SPDZWISERING_HPP_ */

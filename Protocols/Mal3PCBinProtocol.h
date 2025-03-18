@@ -2,7 +2,7 @@
 #define PROTOCOLS_MAL3PCBINPROTOCOL_H_
 
 #include "Replicated.h"
-#include "BinaryCheck.h"
+#include "BinaryCheck.hpp"
 #include "Processor/Data_Files.h"
 
 #include "queue"

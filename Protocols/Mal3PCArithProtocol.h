@@ -166,7 +166,9 @@ public:
                 pointer_answer += padding;
             }
             verify_api();
-            verify();
+            if (pointer_answer > 0) {
+                verify();
+            }
         }
 
         // cout << "Pushing" << endl;

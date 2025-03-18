@@ -523,7 +523,7 @@ void Mal3PCArithProtocol<T>::verify() {
     Nbatches = min((pointer_answer - 1) / batch_size + 1, ms);
     ws.set_target(Nbatches);
 
-    // cout << "Nbatches: " << Nbatches << endl;
+    cout << "Nbatches: " << Nbatches << endl;
 
     offset_data_xy = new_batch_size * Nbatches;
     offset_data_z = batch_size * Nbatches;
